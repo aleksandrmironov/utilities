@@ -43,7 +43,7 @@ for reservation in reservations:
         volumes = conn.get_all_volumes(filters={'attachment.instance-id': instance.id})
 
         for volume in volumes:
-            new_snapshot = conn.create_snapshot(volume.id, "snapshot for %s" % instance.tags.get('Name'))
+            new_snapshot = conn.create_snapshot(volume.id, "snapshot for %s - %s" % (instance.tags.get('Name')), volume.id)
             available_snapshots = conn.get_all_snapshots(filters={'volume-id': volume.id})
             snapshot_array = []
 
@@ -52,5 +52,5 @@ for reservation in reservations:
 
             for snapshot_to_delete in sorted(snapshot_array, key=lambda k: k.start_time, reverse=True)[
                                       cli_args.snapshots_to_keep:]:
-                snapshot_to_delete.delete
+                snapshot_to_delete.delete()
                 print "snapshot %s with start time %s deleted" % (snapshot_to_delete, snapshot_to_delete.start_time)
