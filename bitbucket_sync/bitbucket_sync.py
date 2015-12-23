@@ -41,7 +41,7 @@ def _git_clone(username, password, directory, sub_dir_name, owner, slug, verbose
 def _git_pull(directory, sub_dir_name, owner, slug, verbose=False):
     working_dir = os.path.join(directory, sub_dir_name)
     os.chdir(working_dir)
-    cmd = 'git pull --all'
+    cmd = 'git fetch --all && git pull --all'
     proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     ret_value = proc.wait()
     msg = proc.stdout.read()
