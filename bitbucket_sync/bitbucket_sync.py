@@ -27,7 +27,7 @@ def _get_repositories(owner, username, password):
 
 def _git_clone(username, password, directory, sub_dir_name, owner, slug, verbose=False):
     os.chdir(directory)
-    cmd = 'git clone https://%s:%s@bitbucket.org/%s/%s.git %s' % (username, password,
+    cmd = 'git clone --mirror https://%s:%s@bitbucket.org/%s/%s.git %s' % (username, password,
                                                                   owner, slug, sub_dir_name)
     proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
     ret_value = proc.wait()
