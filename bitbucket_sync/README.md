@@ -1,6 +1,7 @@
 # Bitbucket Sync script
 Special thanks to Fabian Topfstedt(https://bitbucket.org/fabian/)
 
+ ```
 Usage: bitbucket_sync.py [options]
 
 Options:
@@ -16,3 +17,4 @@ Options:
                         The local directory to sync to [Defaults to the
                         current directory]
   -v, --verbose         Verbose output
+```
