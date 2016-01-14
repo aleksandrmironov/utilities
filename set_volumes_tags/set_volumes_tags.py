@@ -35,10 +35,13 @@ reservations = conn.get_all_instances()
 
 for reservation in reservations:
     for instance in reservation.instances:
-        if instance.tags['project'] == cli_args.project_name:
+        if 'project' in instance.tags and instance.tags['project'] == cli_args.project_name:
             volumes = conn.get_all_volumes(filters={'attachment.instance-id': instance.id})
 
             for volume in volumes:
                 for tag in tags_to_sync:
                     volume.add_tag(tag, instance.tags[tag])
                     print "added %s=%s to %s" % (tag, instance.tags[tag], volume.id)
+
+        else:
+            print "project tag problem in %s %s" % (instance.id, instance.tags['Name'])
