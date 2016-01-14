@@ -35,7 +35,7 @@ reservations = conn.get_all_instances()
 
 for reservation in reservations:
     for instance in reservation.instances:
-        if instance.tags['project'] in cli_args.project_name:
+        if instance.tags['project'] == cli_args.project_name:
             volumes = conn.get_all_volumes(filters={'attachment.instance-id': instance.id})
 
             for volume in volumes:
