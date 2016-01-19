@@ -1,4 +1,4 @@
-#Script to backup EBS volumes
+#Script to backup Github repos
 
 
 usage:
