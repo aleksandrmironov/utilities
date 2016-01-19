@@ -11,7 +11,7 @@ usage:
 -t TOKEN 
 -d DIRECTORY
 -a ARCHIVE
--m Enable mirror clone
--e Add datetime ext to the archive filename
+-m Enable mirror clone (yes by default)
+-e Add datetime ext to the archive filename (yes by default)
 -g Additional git params
 ```
